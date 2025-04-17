@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 public class Project extends JFrame implements  ActionListener{
     JMenu exit;
     JMenuItem LeaveApp;
+    JMenuItem newStd,newfac;
     Project(){
         
         setSize(1500,700);
@@ -48,8 +49,10 @@ public class Project extends JFrame implements  ActionListener{
         mb.add(newInfo);
 
         //To Create MenuItem
-        JMenuItem newStd= new JMenuItem("New Student Information");
-        JMenuItem newfac= new JMenuItem("New Faculty Information");
+        newStd= new JMenuItem("New Student Information");
+        newStd.addActionListener(this);
+        newfac= new JMenuItem("New Faculty Information");
+        newfac.addActionListener(this);
       
         newfac.setForeground(Color.BLUE);
         newStd.setForeground(Color.BLUE);
@@ -187,6 +190,13 @@ public class Project extends JFrame implements  ActionListener{
                Runtime.getRuntime().exec("notepad.exe");  
             } catch (Exception e) {
             }
+        }else if(ae.getSource()==newStd){
+            setVisible(false);
+            new AddStudentsDetails();
+        }else if(ae.getSource()==newfac){
+            setVisible(rootPaneCheckingEnabled);
+            new AddTeachersDetails();
+
         }
 
     }

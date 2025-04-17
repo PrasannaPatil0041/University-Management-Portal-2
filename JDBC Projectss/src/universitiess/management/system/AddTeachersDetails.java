@@ -12,18 +12,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class AddStudentsDetails extends JFrame implements ActionListener{
+public class AddTeachersDetails extends JFrame implements ActionListener{
      
      Random ran = new Random();
      int ranNo= ran.nextInt(10000);
      String strRanNo="2025"+String.valueOf(ranNo);
      JTextField txtPhone,txtEmail,txtClassXPerc,txtAddress,txtAdhar,txtCLassXII,txtName,txtFather;
-     JLabel txtRollno;
+     JLabel txtIdNo;
      JDateChooser dcDOB;
      JComboBox cbDegree,cbCourse;
      JButton Submit,Cancel;
       
-     AddStudentsDetails() {
+     AddTeachersDetails() {
         setSize(900,700);
         setVisible(true);
         setLocation(350,50);
@@ -31,7 +31,7 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
         //Remeber u want to crete layout according to u then off the auto layout
         //also add the setBound to elements 
         setLayout(null);
-        JLabel header = new JLabel("New Student Details");
+        JLabel header = new JLabel("New Faculty Details");
         header.setBounds(310, 30, 500, 50);
         header.setFont(new Font("Arial",Font.BOLD,30));
         add(header);
@@ -59,15 +59,15 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
         add(txtFather);
 
          //Line 2
-        JLabel rollNo = new JLabel("Roll No.");
-        rollNo.setBounds(50,200,100,30);
-        rollNo.setFont(new Font("Arial",Font.PLAIN,18));
-        add(rollNo);
+        JLabel id = new JLabel("Employee ID");
+        id.setBounds(50,200,100,30);
+        id.setFont(new Font("Arial",Font.PLAIN,18));
+        add(id);
 
-        txtRollno = new JLabel(strRanNo);
-        txtRollno.setBounds(200, 200, 150, 30);
-        txtRollno.setFont(new Font("Arial",Font.PLAIN,18));
-        add(txtRollno);
+        txtIdNo = new JLabel(strRanNo);
+        txtIdNo.setBounds(200, 200, 150, 30);
+        txtIdNo.setFont(new Font("Arial",Font.PLAIN,18));
+        add(txtIdNo);
 
         JLabel DOB = new JLabel("Date of Birth");
         DOB.setBounds(400,200,200,30);
@@ -145,18 +145,18 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
          add(txtAdhar);
 
           //line 6;
-         JLabel Degree = new JLabel("Degree");
+         JLabel Degree = new JLabel("Highest Degree");
          Degree.setBounds(50,400,100,30);
          Degree.setFont(new Font("Arial",Font.PLAIN,18));
          add(Degree);
 
-         String[] optDegrees={"B.TECH","BA","BE","MBA","BBA","BCA","NURSING"};
+         String[] optDegrees={"M.TECH","ME","B.TECH","BA","BE","MBA","BBA","BCA","NURSING"};
          cbDegree=new JComboBox(optDegrees);
          cbDegree.setBackground(Color.white);
          cbDegree.setBounds(200, 400, 150, 30);
          add(cbDegree);
 
-         JLabel Course = new JLabel("Course");
+         JLabel Course = new JLabel("Department");
          Course.setBounds(400,400,200,30);
          Course.setFont(new Font("Arial",Font.PLAIN,18));
          add(Course);
@@ -201,7 +201,7 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
             String strAdd= txtAddress.getText();
             String strPhn= txtPhone.getText();
             String strEmail= txtEmail.getText();
-            String strRollNo= txtRollno.getText();
+            String strId= txtIdNo.getText();
             String strClasXII= txtCLassXII.getText();
             String strAdhar= txtAdhar.getText();
             String strClassX= txtClassXPerc.getText();
@@ -211,13 +211,16 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
             String strDOB= ((JTextField)dcDOB.getDateEditor().getUiComponent()).getText();
 
             //Here to it gets object so need to convert it to String
-            String strDegree=(String)cbCourse.getSelectedItem();
-            String strCourse=(String)cbDegree.getSelectedItem();
-            System.out.println("st1");
-
+            String strDegree=(String)cbDegree.getSelectedItem();
+            String strCourse=(String)cbCourse.getSelectedItem();
+            
+            
+            //Whenever u want to establish connection in classes,which contains external
+            //files then write it in try{} catch{} 
+            
             try {
                 //String query="INSERT INTO student_details VALUES('"+strName+"','"+strFather+"','"+strRollNo+"','"+strDOB+"','"+strAdd+"','"+strPhn+"','"+strEmail+"','"+strClassX+"','"+strClasXII+"','"+strAdhar+"','"+strDegree+"','"+strCourse+"'";
-                String query = "insert into student_details values('"+strName+"', '"+strFather+"', '"+strRollNo+"', '"+strDOB+"', '"+strAdd+"', '"+strPhn+"', '"+strEmail+"', '"+strClassX+"', '"+strClasXII+"', '"+strAdhar+"', '"+strDegree+"', '"+strCourse+"')";
+                String query = "insert into faculty_details values('"+strName+"', '"+strFather+"', '"+strId+"', '"+strDOB+"', '"+strAdd+"', '"+strPhn+"', '"+strEmail+"', '"+strClassX+"', '"+strClasXII+"', '"+strAdhar+"', '"+strDegree+"', '"+strCourse+"')";
                 Conn c = new Conn();
                 c.s.executeUpdate(query);
                 setVisible(false);
@@ -236,6 +239,6 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
 
 
     public static void main(String[] args){
-          new AddStudentsDetails();
+          new AddTeachersDetails();
     }
 }

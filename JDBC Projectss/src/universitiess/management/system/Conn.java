@@ -4,6 +4,8 @@ package universitiess.management.system;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+//This Class is very important as it establish Connection with sql using jdbc
+//if creat object of this class in any other class it will establish connection with sql
 
 public class Conn {
     
