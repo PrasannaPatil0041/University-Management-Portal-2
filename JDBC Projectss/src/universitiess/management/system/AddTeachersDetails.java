@@ -1,5 +1,4 @@
 package universitiess.management.system;
-
 import com.toedter.calendar.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -217,14 +216,13 @@ public class AddTeachersDetails extends JFrame implements ActionListener{
             
             //Whenever u want to establish connection in classes,which contains external
             //files then write it in try{} catch{} 
-            
+
             try {
                 //String query="INSERT INTO student_details VALUES('"+strName+"','"+strFather+"','"+strRollNo+"','"+strDOB+"','"+strAdd+"','"+strPhn+"','"+strEmail+"','"+strClassX+"','"+strClasXII+"','"+strAdhar+"','"+strDegree+"','"+strCourse+"'";
                 String query = "insert into faculty_details values('"+strName+"', '"+strFather+"', '"+strId+"', '"+strDOB+"', '"+strAdd+"', '"+strPhn+"', '"+strEmail+"', '"+strClassX+"', '"+strClasXII+"', '"+strAdhar+"', '"+strDegree+"', '"+strCourse+"')";
                 Conn c = new Conn();
                 c.s.executeUpdate(query);
                 setVisible(false);
-                new AddStudentsDetails();
 
             } catch (Exception e) {
                 e.printStackTrace();

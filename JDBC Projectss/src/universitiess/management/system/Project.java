@@ -15,11 +15,11 @@ import javax.swing.JMenuItem;
 
 public class Project extends JFrame implements  ActionListener{
     JMenu exit;
-    JMenuItem LeaveApp;
+    JMenuItem LeaveApp,DetStd,Detfac,stdLeave,facLeave;
     JMenuItem newStd,newfac;
     Project(){
         
-        setSize(1500,700);
+        setSize(1600,950);
         setLayout(null);
 
         // Adding 1st image(logo)
@@ -27,16 +27,16 @@ public class Project extends JFrame implements  ActionListener{
         Image scaledImage2= i4.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
         ImageIcon i5=new ImageIcon(scaledImage2);
         JLabel image2= new JLabel(i5);
-        int xPosition = getWidth() - i5.getIconWidth() - 20; // Right side with 20px padding
+        int xPosition = getWidth() - i5.getIconWidth() - 80; // Right side with 20px padding
         image2.setBounds(xPosition, 20, i5.getIconWidth(), i5.getIconHeight());
         add(image2);
 
         // Adding 2 image
         ImageIcon i1=new ImageIcon(ClassLoader.getSystemResource("icons/prasannaCol.png"));
-        Image scaledImage= i1.getImage().getScaledInstance(1630, 700, Image.SCALE_DEFAULT);
+        Image scaledImage= i1.getImage().getScaledInstance(1700, 500, Image.SCALE_DEFAULT);
         ImageIcon i3=new ImageIcon(scaledImage);
         JLabel image= new  JLabel(i3);
-        image.setBounds(0, 280, 1630, 700);
+        image.setBounds(0, 280, 1700, 500);
         add(image);
         
         //Creation of MenuBar
@@ -65,8 +65,11 @@ public class Project extends JFrame implements  ActionListener{
         viewDet.setFont(new Font("", Font.BOLD, 17));
         mb.add(viewDet);
 
-        JMenuItem DetStd= new JMenuItem("View Student Details");
-        JMenuItem Detfac= new JMenuItem("View Faculty Details");
+        DetStd= new JMenuItem("View Student Details");
+        DetStd.addActionListener(this);
+
+        Detfac= new JMenuItem("View Faculty Details");
+        Detfac.addActionListener(this);
         Detfac.setForeground(Color.BLUE);
         DetStd.setForeground(Color.BLUE);
         viewDet.add(Detfac);
@@ -78,8 +81,11 @@ public class Project extends JFrame implements  ActionListener{
         leave.setForeground(Color.BLUE);
         mb.add(leave);
 
-        JMenuItem stdLeave= new JMenuItem("Student Leave");
-        JMenuItem facLeave= new JMenuItem("Faculty Leave");
+        stdLeave= new JMenuItem("Student Leave");
+        stdLeave.addActionListener(this);
+        facLeave= new JMenuItem("Faculty Leave");
+        facLeave.addActionListener(this);
+
         stdLeave.setForeground(Color.BLUE);
         facLeave.setForeground(Color.BLUE);
         leave.add(stdLeave);
@@ -191,12 +197,20 @@ public class Project extends JFrame implements  ActionListener{
             } catch (Exception e) {
             }
         }else if(ae.getSource()==newStd){
-            setVisible(false);
             new AddStudentsDetails();
         }else if(ae.getSource()==newfac){
-            setVisible(rootPaneCheckingEnabled);
             new AddTeachersDetails();
 
+        }else if(ae.getSource()==DetStd){
+            new ShowStudentDetails();
+        }else if(ae.getSource()==Detfac){
+            new ShowFacultyDetails();
+        }
+        
+        else if(ae.getSource()==stdLeave){
+            new ApplyLeaveStd();
+        }else if(ae.getSource()==facLeave){
+            new ApplyyLeaveFaculty();
         }
 
     }

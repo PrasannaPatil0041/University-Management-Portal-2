@@ -27,6 +27,7 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
         setSize(900,700);
         setVisible(true);
         setLocation(350,50);
+        getContentPane().setBackground(Color.GRAY);
         //setBackground(Color.BLACK);
         //Remeber u want to crete layout according to u then off the auto layout
         //also add the setBound to elements 
@@ -213,15 +214,27 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
             //Here to it gets object so need to convert it to String
             String strDegree=(String)cbCourse.getSelectedItem();
             String strCourse=(String)cbDegree.getSelectedItem();
-            System.out.println("st1");
+            txtAddress.setText("");
+            txtAdhar.setText("");
+            txtCLassXII.setText("");
+            txtClassXPerc.setText("");
+            txtEmail.setText("");
+            txtFather.setText("");
+            txtPhone.setText("");
+            txtPhone.setText("");
+            txtName.setText("");
+            dcDOB.setDate(null);
+            Random ran2= new Random();
+            int ranNo= ran.nextInt(10000);
+            String strRanNo2="2025"+String.valueOf(ranNo);
+            txtRollno.setText(strRanNo2);
 
             try {
                 //String query="INSERT INTO student_details VALUES('"+strName+"','"+strFather+"','"+strRollNo+"','"+strDOB+"','"+strAdd+"','"+strPhn+"','"+strEmail+"','"+strClassX+"','"+strClasXII+"','"+strAdhar+"','"+strDegree+"','"+strCourse+"'";
                 String query = "insert into student_details values('"+strName+"', '"+strFather+"', '"+strRollNo+"', '"+strDOB+"', '"+strAdd+"', '"+strPhn+"', '"+strEmail+"', '"+strClassX+"', '"+strClasXII+"', '"+strAdhar+"', '"+strDegree+"', '"+strCourse+"')";
                 Conn c = new Conn();
                 c.s.executeUpdate(query);
-                setVisible(false);
-                new AddStudentsDetails();
+                
 
             } catch (Exception e) {
                 e.printStackTrace();
