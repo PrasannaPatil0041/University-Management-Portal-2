@@ -11,13 +11,14 @@ public class Conn {
     
     Connection c;
     Statement s;
+    Statement s1;
 
     Conn () {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/university", "root", "Prasanna@123");
             s = c.createStatement();
-            
+            s1= c.createStatement();
             
         } catch (Exception e) {
             e.printStackTrace();

@@ -220,8 +220,10 @@ public class Project extends JFrame implements  ActionListener{
         else if(ae.getSource()==addMarks){
             new EnterExamMarks();
         }else if(ae.getSource()==examMark){
-            
+            new ExamDetails();
         }
+
+       
 
     }
        
