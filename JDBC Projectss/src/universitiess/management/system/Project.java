@@ -16,7 +16,7 @@ import javax.swing.JMenuItem;
 public class Project extends JFrame implements  ActionListener{
     JMenu exit;
     JMenuItem LeaveApp,DetStd,Detfac,stdLeave,facLeave;
-    JMenuItem newStd,newfac;
+    JMenuItem newStd,newfac,examMark,addMarks;
     Project(){
         
         setSize(1600,950);
@@ -110,8 +110,12 @@ public class Project extends JFrame implements  ActionListener{
         exam.setForeground(Color.BLUE);
         mb.add(exam);
 
-        JMenuItem examMark= new JMenuItem("Exam Marks");
-        JMenuItem addMarks= new JMenuItem("Add Marks");
+        examMark= new JMenuItem("Exam Marks");
+        examMark.addActionListener(this);
+
+        addMarks= new JMenuItem("Add Marks");
+        addMarks.addActionListener(this);
+
         examMark.setForeground(Color.BLUE);
         addMarks.setForeground(Color.BLUE);
         exam.add(examMark);
@@ -211,6 +215,12 @@ public class Project extends JFrame implements  ActionListener{
             new ApplyLeaveStd();
         }else if(ae.getSource()==facLeave){
             new ApplyyLeaveFaculty();
+        }
+
+        else if(ae.getSource()==addMarks){
+            new EnterExamMarks();
+        }else if(ae.getSource()==examMark){
+            
         }
 
     }
