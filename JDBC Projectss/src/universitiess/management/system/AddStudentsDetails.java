@@ -151,7 +151,7 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
          Degree.setFont(new Font("Arial",Font.PLAIN,18));
          add(Degree);
 
-         String[] optDegrees={"B.TECH","BA","BE","MBA","BBA","BCA","NURSING"};
+         String[] optDegrees={"BTECH","BA","BE","MBA","BBA","BCA","NURSING"};
          cbDegree=new JComboBox(optDegrees);
          cbDegree.setBackground(Color.white);
          cbDegree.setBounds(200, 400, 150, 30);
@@ -234,6 +234,10 @@ public class AddStudentsDetails extends JFrame implements ActionListener{
                 String query = "insert into student_details values('"+strName+"', '"+strFather+"', '"+strRollNo+"', '"+strDOB+"', '"+strAdd+"', '"+strPhn+"', '"+strEmail+"', '"+strClassX+"', '"+strClasXII+"', '"+strAdhar+"', '"+strDegree+"', '"+strCourse+"')";
                 Conn c = new Conn();
                 c.s.executeUpdate(query);
+
+                String query2 = "INSERT INTO fee_paid (roll) VALUES('"+strRollNo+"')";
+                Conn cs = new Conn();
+                cs.s.executeUpdate(query2);
                 
 
             } catch (Exception e) {
